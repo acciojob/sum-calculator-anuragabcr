@@ -1,13 +1,35 @@
+import React, { useState, useEffect } from 'react';
 
-import React from "react";
-import './../styles/App.css';
+function SumCalculator() {
+  const [numbers, setNumbers] = useState([]);
+  const [sum, setSum] = useState(0);
 
-const App = () => {
+  const handleNumberChange = (event) => {
+    const newNumber = parseInt(event.target.value, 10);
+    if (!isNaN(newNumber)) {
+      setNumbers([...numbers, newNumber]);
+    }
+  };
+
+  useEffect(() => {
+    const calculateSum =  () => {
+      let total = 0;
+      for (const num of numbers) {
+        total += num;
+      }
+      setSum(total);
+    };
+
+    calculateSum();
+  }, [numbers]);
+
   return (
-    <div>
-        {/* Do not remove the main div */}
+    <div className="sum-calculator">
+      <h2>Sum Calculator</h2>
+      <input type="number" placeholder="Enter a number" onChange={handleNumberChange} />
+      <p>Current Sum: {sum}</p>
     </div>
-  )
+  );
 }
 
-export default App
+export default SumCalculator;
