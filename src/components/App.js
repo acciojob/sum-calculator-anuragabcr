@@ -25,9 +25,9 @@ function SumCalculator() {
 
   return (
     <div className="sum-calculator">
-      <h2>Sum Calculator</h2>
+      <h1>Sum Calculator</h1>
       <input type="number" placeholder="Enter a number" onChange={handleNumberChange} />
-      <p>Current Sum: {sum}</p>
+      <p>Sum: {sum}</p>
     </div>
   );
 }
